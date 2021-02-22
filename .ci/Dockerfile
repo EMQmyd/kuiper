@@ -4,8 +4,8 @@ COPY . /go/kuiper
 
 WORKDIR /go/kuiper
 
-RUN apt update \
-    && apt install -y zip upx pkg-config libczmq-dev build-essential debhelper \
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends apt-utils zip upx pkg-config libczmq-dev build-essential debhelper \
     && make -C /go/kuiper pkg
 
 RUN dpkg -i _packages/*.deb \
